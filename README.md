@@ -7,13 +7,11 @@ API articles
 
   Install the executable. The executable's major version will match Express's:
 
-```bash
 $ npm install
 
 
   Start the server:
 
-```bash
 $ npm start
 
 
