@@ -3,6 +3,7 @@ const bodtParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,6 +13,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static('public'));
+
+app.use(cors({
+  origin: '*'
+}));
 
 mongoose.connect('mongodb://localhost:27017/contentDB', {userNewUrlParser: true})
 
@@ -24,10 +29,9 @@ const Article = mongoose.model('Article', articleSchema);
 app.get("/articles", function(req, res){
   Article.find(function(err, foundAriticles){
     if (foundAriticles) {
-      const jsonArticles = JSON.stringify(foundAriticles);
-      res.send(jsonArticles);
+      res.send({data: foundAriticles});
     } else {
-      res.send("No articles currently in wikiDB.");
+      res.send("No articles currently");
     }
   })
 })
