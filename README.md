@@ -12,7 +12,7 @@ $ npm install
 
   Start the server:
 
-$ npm start
+$ nodemon app.js
 
 
-  View the website at: http://localhost:3001
+  View the website at: http://localhost:3001/articles
